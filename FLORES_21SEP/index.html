@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>21 de septiembre · Flores amarillas 🌻</title>
+<style>
+  :root{
+    --amarillo:#ffd93d;
+    --ambar:#ff9f1c;
+    --naranja:#ff7b29;
+    --cielo1:#63b8f0;
+    --cielo2:#bfe8ff;
+    --verde:#7ccf3f;
+    --verde2:#57b52e;
+    --marron:#5a3d1f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+    font-family:'Trebuchet MS','Segoe UI',Arial,sans-serif;
+    color:var(--marron);
+    background:linear-gradient(180deg,var(--cielo1) 0%,var(--cielo2) 34%,#dff3ff 46%,#fff6dd 58%,#ffe9a8 76%,#ffd75e 100%);
+    min-height:100vh;
+    overflow-x:hidden;
+    position:relative;
+    cursor:default;
+  }
+  /* ==================== CIELO ==================== */
+  .sol{position:fixed;top:-78px;left:-78px;width:250px;height:250px;z-index:1;pointer-events:none;}
+  .sol .bol{position:absolute;inset:40px;border-radius:50%;
+    background:radial-gradient(circle at 38% 34%,#fff7c2,#ffd43b 58%,#ffa51e);
+    box-shadow:0 0 70px 30px rgba(255,212,59,.5);}
+  .sol .rayos{position:absolute;inset:0;border-radius:50%;
+    background:repeating-conic-gradient(from 0deg,rgba(255,212,59,.85) 0deg 7deg,rgba(255,212,59,0) 7deg 15deg);
+    -webkit-mask:radial-gradient(circle,transparent 0 44%,#000 44% 64%,transparent 64%);
+            mask:radial-gradient(circle,transparent 0 44%,#000 44% 64%,transparent 64%);
+    animation:giro 45s linear infinite;}
+  @keyframes giro{to{transform:rotate(360deg);}}
+
+  .nube{position:fixed;z-index:1;pointer-events:none;opacity:.85;}
+  .nube i{display:block;background:#fff;border-radius:40px;
+    box-shadow:26px 12px 0 -6px #fff, -30px 8px 0 -6px #fff, 60px 4px 0 -5px #fff;}
+  .nube.n1{top:9%;width:230px;height:44px;left:-240px;animation:nubeMover 34s linear infinite;}
+  .nube.n2{top:20%;width:160px;height:32px;left:-170px;animation:nubeMover 26s linear infinite;animation-delay:-14s;opacity:.7;transform:scale(.75);}
+  .nube.n3{top:5%;width:190px;height:38px;left:-200px;animation:nubeMover 42s linear infinite;animation-delay:-30s;opacity:.6;transform:scale(.9);}
+  @keyframes nubeMover{0%{transform:translateX(0);}100%{transform:translateX(calc(100vw + 480px));}}
+
+  .mariposa{position:fixed;z-index:6;font-size:26px;pointer-events:none;
+    filter:drop-shadow(0 4px 6px rgba(0,0,0,.12));}
+  .mariposa.m1{top:26%;animation:marip1 24s ease-in-out infinite;}
+  .mariposa.m2{top:58%;font-size:20px;opacity:.9;animation:marip2 30s ease-in-out infinite;animation-delay:-12s;}
+  @keyframes marip1{0%{transform:translate(-8vw,0) rotate(0deg) scaleX(1);}25%{transform:translate(22vw,90px) rotate(12deg);}50%{transform:translate(55vw,20px) scaleX(-1);}75%{transform:translate(80vw,110px) rotate(-12deg);}100%{transform:translate(108vw,0) scaleX(1);}}
+  @keyframes marip2{0%{transform:translate(108vw,0) rotate(8deg);}25%{transform:translate(80vw,70px);}50%{transform:translate(50vw,0) scaleX(-1);}75%{transform:translate(20vw,80px);}100%{transform:translate(-8vw,0);}}
+
+  .abeja{position:fixed;z-index:6;font-size:30px;pointer-events:none;
+    filter:drop-shadow(0 4px 6px rgba(0,0,0,.15));
+    animation:zumba 16s ease-in-out infinite;}
+  @keyframes zumba{0%{transform:translate(110vw,60vh) rotate(0deg);}20%{transform:translate(70vw,72vh) rotate(-8deg);}40%{transform:translate(38vw,66vh) rotate(8deg);}55%{transform:translate(18vw,78vh) rotate(-6deg);}70%{transform:translate(35vw,74vh) rotate(6deg);}100%{transform:translate(110vw,60vh);}}
+
+  /* ==================== ESTRUCTURA ==================== */
+  main{position:relative;z-index:10;max-width:900px;margin:0 auto;padding:34px 18px 10px;text-align:center;}
+
+  .chip{display:inline-block;background:rgba(255,255,255,.8);border:2px solid rgba(255,180,60,.55);
+    color:#b4620a;font-weight:700;font-size:14px;letter-spacing:.4px;
+    padding:8px 18px;border-radius:60px;box-shadow:0 6px 16px rgba(0,0,0,.1);
+    animation:chipin 1s cubic-bezier(.2,1.6,.4,1) both;}
+  @keyframes chipin{from{transform:translateY(-18px) scale(.8);opacity:0;}to{transform:none;opacity:1;}}
+
+  h1{font-size:clamp(34px,6.5vw,62px);line-height:1.08;font-weight:800;margin:18px 0 6px;
+    color:#fff;letter-spacing:.5px;
+    text-shadow:0 3px 0 rgba(255,160,30,.6),0 8px 18px rgba(90,61,31,.35);
+    animation:latido 3.2s ease-in-out infinite;}
+  h1 .esp{display:inline-block;animation:salto 1.6s ease-in-out infinite;}
+  @keyframes latido{0%,100%{transform:scale(1);}50%{transform:scale(1.015);}}
+  @keyframes salto{0%,100%{transform:translateY(0) rotate(-6deg);}50%{transform:translateY(-12px) rotate(8deg);}}
+
+  .volanta{color:#7a5a21;font-weight:700;font-size:clamp(15px,2.4vw,19px);text-shadow:0 1px 0 #fff;}
+
+  .frase{margin:26px auto 4px;max-width:640px;min-height:92px;display:flex;align-items:center;justify-content:center;
+    background:rgba(255,255,255,.82);border:2px dashed var(--ambar);border-radius:26px;
+    padding:20px 26px;font-size:clamp(16px,2.5vw,20px);line-height:1.65;color:#6b4a17;
+    box-shadow:0 10px 26px rgba(255,155,40,.22);cursor:pointer;user-select:none;}
+  .frase .cursorF{display:inline-block;width:3px;height:1.15em;background:var(--naranja);
+    transform:translateY(.2em);margin-left:3px;animation:parpadea .85s steps(1) infinite;}
+  @keyframes parpadea{50%{opacity:0;}}
+  .pista{font-size:12.5px;color:#b98b3a;margin:8px 0 26px;font-weight:600;}
+
+  /* ==================== TARJETAS ==================== */
+  .tarjetas{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin:6px 0 30px;}
+  .tarjeta{background:rgba(255,255,255,.86);border-radius:22px;padding:20px 18px;text-align:left;
+    border:2px solid rgba(255,190,80,.6);box-shadow:0 10px 24px rgba(0,0,0,.09);
+    opacity:0;transform:translateY(30px) scale(.94);transition:transform .2s ease,box-shadow .2s ease;}
+  .tarjeta.on{animation:aparecer .7s cubic-bezier(.2,1.5,.4,1) both;}
+  @keyframes aparecer{from{opacity:0;transform:translateY(34px) scale(.9);}to{opacity:1;transform:none;}}
+  .tarjeta:hover{transform:translateY(-5px) rotate(-1.2deg) scale(1.03);box-shadow:0 16px 34px rgba(255,155,40,.28);}
+  .tarjeta .ico{font-size:34px;display:inline-block;animation:latido 2.6s ease-in-out infinite;}
+  .tarjeta h3{font-size:18px;color:#b4620a;margin:8px 0 6px;letter-spacing:.3px;}
+  .tarjeta p{font-size:14.5px;line-height:1.55;color:#6b4a17;}
+
+  /* ==================== JARDÍN ==================== */
+  .jardin{position:relative;height:clamp(280px,44vh,420px);margin:0 -18px;overflow:hidden;
+    cursor:crosshair;user-select:none;}
+  .jardin::before{content:'';position:absolute;inset:auto -10% -22% -10%;height:78%;pointer-events:none;
+    background:radial-gradient(130% 120% at 50% 100%,var(--verde2) 0 46%,rgba(87,181,46,0) 47%);
+    border-radius:50% 50% 0 0 / 100% 100% 0 0;}
+  .jardin::after{content:'';position:absolute;inset:auto -10% -40% -10%;height:80%;pointer-events:none;
+    background:radial-gradient(130% 120% at 50% 100%,var(--verde) 0 42%,rgba(124,207,63,0) 43%);
+    border-radius:50% 50% 0 0 / 100% 100% 0 0;}
+  .aviso-j{position:absolute;top:14px;left:0;right:0;text-align:center;z-index:20;
+    color:#fff;font-weight:800;font-size:14px;letter-spacing:.4px;
+    text-shadow:0 2px 6px rgba(90,61,31,.5);pointer-events:none;animation:latido 2.8s ease-in-out infinite;}
+  .jardin .flor{position:absolute;bottom:24px;pointer-events:none;
+    animation:crecer .55s cubic-bezier(.2,1.7,.4,1) both;}
+  .jardin .flor.recien{animation:crecer .55s cubic-bezier(.2,1.7,.4,1) both;}
+  @keyframes crecer{0%{transform:translateY(60px) scale(.15);opacity:0;}
+    70%{transform:translateY(-6px) scale(1.06);opacity:1;}
+    100%{transform:translateY(0) scale(1);opacity:1;}}
+  .jardin .flor::after{content:'';position:absolute;left:50%;top:-10px;bottom:-46px;width:7px;
+    transform:translateX(-50%);background:linear-gradient(180deg,#3d8b1c,#2f7013);
+    border-radius:4px;z-index:-1;}
+  .jardin .flor .hojaL,.jardin .flor .hojaR{position:absolute;left:50%;bottom:-30px;width:30px;height:16px;
+    border-radius:50% 50% 50% 0;background:#4da523;transform-origin:left center;}
+  .jardin .flor .hojaR{transform-origin:right center;border-radius:50% 50% 0 50%;}
+  .solFlower{position:absolute;left:50%;top:0;transform:translateX(-50%) rotate(var(--rot,0deg));
+    width:var(--tam,92px);height:var(--tam,92px);border-radius:50%;
+    background:repeating-conic-gradient(from 16deg,var(--amarillo) 0deg 21deg,var(--ambar) 21deg 42deg);
+    box-shadow:0 12px 20px rgba(0,0,0,.16);
+    animation:mecer 4s ease-in-out infinite;animation-delay:var(--del,0s);}
+  .solFlower::after{content:'';position:absolute;inset:30%;border-radius:50%;
+    background:radial-gradient(circle at 35% 32%,#f7d47a,#9c6b1f 66%,#6f4a12);
+    box-shadow:inset 0 -3px 6px rgba(0,0,0,.35);}
+  @keyframes mecer{0%,100%{transform:translateX(-50%) rotate(calc(var(--rot,0deg) - 4deg));}
+    50%{transform:translateX(-50%) rotate(calc(var(--rot,0deg) + 4deg));}}
+
+  /* ==================== BOTONES ==================== */
+  .botones{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin:14px 0 8px;}
+  .btn{border:none;cursor:pointer;font-family:inherit;font-weight:800;font-size:16px;letter-spacing:.3px;
+    padding:15px 26px;border-radius:60px;color:#5a3d1f;
+    box-shadow:0 8px 18px rgba(0,0,0,.16),inset 0 -3px 0 rgba(0,0,0,.08);
+    transition:transform .16s ease,box-shadow .16s ease;
+    animation:cristal 2.4s ease-in-out infinite;}
+  .btn:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 14px 28px rgba(0,0,0,.2);}
+  .btn:active{transform:scale(.95);}
+  .btn.fiesta{background:linear-gradient(135deg,#ffd93d,#ff9f1c);}
+  .btn.siembra{background:linear-gradient(135deg,#d7f86b,#7ccf3f);color:#2f5a0e;}
+  @keyframes cristal{0%,100%{box-shadow:0 8px 18px rgba(0,0,0,.16);}50%{box-shadow:0 8px 22px rgba(255,170,40,.45);}}
+
+  /* ==================== EFECTOS ==================== */
+  #capaFx{position:fixed;inset:0;z-index:60;pointer-events:none;overflow:hidden;}
+  #capaConfeti{position:fixed;inset:0;z-index:55;pointer-events:none;overflow:hidden;}
+  .petalo{position:fixed;top:-40px;z-index:5;pointer-events:none;
+    background:radial-gradient(circle at 30% 30%,#ffe48a,#ffb84d 72%);
+    border-radius:60% 40% 60% 40%;width:14px;height:10px;opacity:.85;
+    animation:caer linear forwards;}
+  @keyframes caer{0%{transform:translate(0,-40px) rotate(0);opacity:0;}
+    6%{opacity:.9;}100%{transform:translate(var(--dx),112vh) rotate(720deg);opacity:.5;}}
+  .estrella{position:absolute;width:14px;height:14px;
+    background:radial-gradient(circle,#ffdf6b,#ffb020 85%);
+    clip-path:polygon(50% 0,62% 39%,100% 50%,62% 61%,50% 100%,39% 61%,0 50%,39% 39%);
+    animation:fogon 700ms ease-out forwards;}
+  @keyframes fogon{0%{transform:scale(0) rotate(0);opacity:1;}
+    60%{transform:scale(1.25) rotate(90deg);opacity:.9;}
+    100%{transform:scale(.3) rotate(180deg);opacity:0;}}
+  .confetti{position:absolute;width:9px;height:16px;opacity:1;border-radius:2px;
+    animation:confetiFly 2.4s cubic-bezier(.2,.6,.35,1) forwards;}
+  @keyframes confetiFly{0%{transform:translate(0,0) rotate(0);opacity:1;}
+    70%{opacity:1;}100%{transform:translate(var(--cx),var(--cy)) rotate(var(--cr));opacity:0;}}
+  .anillo{position:fixed;z-index:40;pointer-events:none;left:50%;top:38%;transform:translate(-50%,-50%);
+    width:600px;height:300px;border-radius:1200px 1200px 0 0;opacity:0;
+    background:linear-gradient(90deg,#ff6b6b 0 15%,#ffa94d 15% 30%,#ffe066 30% 47%,#69db7c 47% 63%,#4dabf7 63% 79%,#b197fc 79% 90%,#ff6b6b 90%);
+    filter:drop-shadow(0 0 24px rgba(255,255,255,.8));
+    transition:opacity .5s ease;}
+  .anillo.mostrar{opacity:.95;}
+
+  /* ==================== FOOTER ==================== */
+  footer{position:relative;z-index:10;text-align:center;padding:12px 16px 30px;color:#8a5b14;font-size:14px;font-weight:600;}
+  footer .llave{display:inline-block;margin-left:8px;font-size:20px;cursor:pointer;user-select:none;
+    transform:scale(1);transition:transform .15s;}
+  footer .llave:active{transform:scale(1.5) rotate(20deg);}
+
+  #toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(80px);z-index:80;
+    background:rgba(90,61,31,.92);color:#ffe8b0;padding:13px 22px;border-radius:60px;font-weight:700;font-size:15px;
+    box-shadow:0 10px 26px rgba(0,0,0,.3);opacity:0;transition:transform .4s cubic-bezier(.2,1.5,.4,1),opacity .4s;max-width:92vw;text-align:center;}
+  #toast.on{transform:translateX(-50%) translateY(0);opacity:1;}
+
+  @media (max-width:520px){ .frase{min-height:110px;} }
+</style>
+</head>
+<body>
+
+<div class="sol"><div class="rayos"></div><div class="bol"></div></div>
+<div class="nube n1"><i></i></div>
+<div class="nube n2"><i></i></div>
+<div class="nube n3"><i></i></div>
+<div class="mariposa m1">🦋</div>
+<div class="mariposa m2">🦋</div>
+<div class="abeja">🐝</div>
+
+<main>
+  <span class="chip">🌷 21 de septiembre · Día de las Flores Amarillas</span>
+  <h1>¡Es 21 de <span class="esp">septiembre</span>! 🌻</h1>
+  <p class="volanta">Este día se regalan flores amarillas… y hoy el campo entero es para ti.</p>
+
+  <div class="frase" id="frase"><span id="tx"></span><span class="cursorF" id="cursorF"></span></div>
+  <p class="pista">💛 Toca la frase para una nueva, o siembra flores en el campo de abajo</p>
+
+  <section class="tarjetas">
+    <div class="tarjeta" data-retardo="0">
+      <span class="ico">🌟</span>
+      <h3>Tu luz</h3>
+      <p>Hay personas que alegran cualquier lugar con solo llegar. Hoy tu lugar está lleno de flores amarillas, porque ese encanto tuyo merece su propio campo de primavera.</p>
+    </div>
+    <div class="tarjeta" data-retardo=".15">
+      <span class="ico">💪</span>
+      <h3>Lo que más admiro</h3>
+      <p>Que estudias con juicio, que cumples lo que prometes y que, aunque lleguen días difíciles, no te dejas vencer. Admiro tu entrega, y mucho.</p>
+    </div>
+    <div class="tarjeta" data-retardo=".3">
+      <span class="ico">🌼</span>
+      <h3>Para tus días grises</h3>
+      <p>Cuando sientas que el mundo pesa, mira este campo: cada flor se levantó desde una semilla escondida. Tú también vas a salir adelante, siempre. Aquí estoy para recordártelo.</p>
+    </div>
+    <div class="tarjeta" data-retardo=".45">
+      <span class="ico">🫂</span>
+      <h3>Amistad</h3>
+      <p>Ni el tiempo ni la distancia le quitan nada a una buena amistad: uno se alegra solo de saber que el otro está bien. Hoy te lo recordé sembrando girasoles.</p>
+    </div>
+  </section>
+
+  <div class="botones">
+    <button class="btn fiesta" id="btnCelebrar">🎉 ¡Celebrar el día!</button>
+    <button class="btn siembra" id="btnSembrar">🌱 Sembrar más flores</button>
+  </div>
+</main>
+
+<section class="jardin" id="jardin">
+  <div class="aviso-j">✋ Haz clic aquí para sembrar tu propia flor 🌻</div>
+</section>
+
+<footer>
+  Hecho con 💛 el 21 de septiembre · para una gran amistad
+  <span class="llave" id="llave" title="🌻">🌻</span>
+</footer>
+
+<div class="anillo" id="arcoiris"></div>
+<div id="capaFx"></div>
+<div id="capaConfeti"></div>
+<div id="toast"></div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(s){ return document.querySelector(s); };
+
+  /* ==================== TEXTO con máquina de escribir (a prueba de pulsaciones rápidas) ==================== */
+  var txs = [
+    "Hoy es 21 de septiembre, el día en que las flores amarillas salen a decir cosas bonitas.",
+    "Y la persona más bonita a la que yo quiero decírselo… ¡eres tú! 🌻",
+    "Que tu día sea tan brillante como este sol de primavera.",
+    "Que sepas que aquí alguien aplaude tu esfuerzo: tú sí que das ganas de florecer ✨",
+    "Que cada flor sembrada hoy te traiga los deseos que más quieras cumplir."
+  ];
+  var txExtra = [
+    "En la primavera todo florece… y contigo es más fácil creerlo 🌼",
+    "Las flores amarillas son de quien las regala: hoy elige ser feliz 💛",
+    "Nada se compara con ver sonreír a la gente que uno aprecia 🌟",
+    "Que la juiciosidad con la que estudias te lleve a donde sueñas. ¡Lo estás logrando a la perfección! 🌱",
+    "De corazón noble y de mente brillante: un orgullo tenerte cerca 🫶"
+  ];
+  var $tx = $('#tx'), $cur = $('#cursorF'), $frase = $('#frase');
+  var tTimer = null, tOk = false;
+
+  function escribir(fr){
+    clearInterval(tTimer);                 // cancela cualquier escritura previa (clave anti-bug)
+    tOk = false;
+    $tx.textContent = '';
+    $cur.style.opacity = '1';
+    var i = 0;
+    tTimer = setInterval(function(){
+      if (i <= fr.length){
+        $tx.textContent = fr.slice(0, i);
+        i++;
+      } else {
+        clearInterval(tTimer);
+        tTimer = null;
+        tOk = true;
+        $cur.style.opacity = '';           // cursor sigue parpadeando con CSS
+      }
+    }, 40);
+  }
+
+  function siguienteFrase(){
+    escribir(txs[Math.floor(Math.random()*txs.length)]);
+  }
+  $frase.addEventListener('click', function(){ siguienteFrase(); });
+  siguienteFrase();
+
+  /* ==================== ENTRADA DE LAS TARJETAS ==================== */
+  var tarjetas = document.querySelectorAll('.tarjeta');
+  var retardoBase = [0, .12, .24, .36];
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(en){
+        if (en.isIntersecting){
+          var el = en.target;
+          el.classList.add('on');
+          el.style.animationDelay = retardoBase[Array.prototype.indexOf.call(tarjetas, el) % retardoBase.length] + 's';
+          io.unobserve(el);
+        }
+      });
+    }, {threshold:.3});
+    tarjetas.forEach(function(t){ io.observe(t); });
+  } else {
+    tarjetas.forEach(function(t){ t.classList.add('on'); });
+  }
+
+  /* ==================== JARDÍN INTERACTIVO ==================== */
+  var jardin = $('#jardin');
+  var floresPlantadas = 0;
+  var MAX_FLORES = 42;
+
+  function crearFlor(x, minY){
+    if (floresPlantadas >= MAX_FLORES) return null;
+    var flor = document.createElement('div');
+    flor.className = 'flor recien';
+    var tam = 60 + Math.random()*55;
+    var rot = -16 + Math.random()*32;
+    flor.style.left = Math.max(28, Math.min(jardin.clientWidth - 28, x)) + 'px';
+    flor.style.bottom = (26 + Math.random()*26) + 'px';
+    flor.style.setProperty('--tam', tam + 'px');
+    flor.style.setProperty('--rot', rot + 'deg');
+    flor.style.setProperty('--del', (Math.random()*2).toFixed(2) + 's');
+
+    var rama = document.createElement('div'); rama.className = 'solFlower'; flor.appendChild(rama);
+    var hL = document.createElement('div'); hL.className = 'hojaL'; flor.appendChild(hL);
+    var hR = document.createElement('div'); hR.className = 'hojaR'; flor.appendChild(hR);
+
+    jardin.appendChild(flor);
+    floresPlantadas++;
+    flor.addEventListener('animationend', function onEnd(){
+      if (flor.classList.contains('recien')){
+        flor.classList.remove('recien');
+        flor.removeEventListener('animationend', onEnd);
+      }
+    });
+    return flor;
+  }
+
+  jardin.addEventListener('click', function(e){
+    var rect = jardin.getBoundingClientRect();
+    crearFlor(e.clientX - rect.left);
+    destello(e.clientX, e.clientY, 6);
+  });
+
+  function plantarVarias(n){
+    for (var i = 0; i < n; i++){
+      var x = 30 + Math.random() * (jardin.clientWidth - 60);
+      crearFlor(x);
+    }
+  }
+  plantarVarias(5); // flores iniciales
+
+  /* ==================== CONFETI + ARCOÍRIS ==================== */
+  var confetiCap = $('#capaConfeti');
+  var COLORES = ['#ffd93d','#ff9f1c','#ff5d6c','#7ccf3f','#4dabf7','#e599f7','#ff7b29'];
+  var celebrando = false;
+
+  function confeti(dondeX, dondeY, cantidad){
+    var r = confetiCap.getBoundingClientRect();
+    for (var i = 0; i < cantidad; i++){
+      var p = document.createElement('div');
+      p.className = 'confetti';
+      p.style.left = (dondeX + (Math.random()*60 - 30)) + 'px';
+      p.style.top  = (dondeY + (Math.random()*40 - 20)) + 'px';
+      p.style.background = COLORES[Math.floor(Math.random()*COLORES.length)];
+      p.style.width  = (7 + Math.random()*7) + 'px';
+      p.style.height = (12 + Math.random()*10) + 'px';
+      p.style.setProperty('--cx', (Math.random()*600 - 300) + 'px');
+      p.style.setProperty('--cy', (Math.random()*520 + 140) + 'px');
+      p.style.setProperty('--cr', (Math.random()*900 - 450) + 'deg');
+      confetiCap.appendChild(p);
+      retirar(p, 2500);
+    }
+  }
+
+  function retirar(el, ms){
+    setTimeout(function(){ if (el && el.parentNode) el.parentNode.removeChild(el); }, ms);
+  }
+
+  $('#btnCelebrar').addEventListener('click', function(e){
+    if (celebrando) return;              // bloqueo anti-repetición
+    celebrando = true;
+    var b = e.currentTarget.getBoundingClientRect();
+    var cx = b.left + b.width/2, cy = b.top + b.height/2;
+    confeti(cx, cy, 110);
+    plantarVarias(6);
+    var arco = $('#arcoiris');
+    arco.classList.add('mostrar');
+    escribir(txs[Math.floor(Math.random()*txs.length)]);
+    mostrarAviso('🎊 ¡A celebrar el 21 de septiembre! El cielo se llenó de color.');
+    setTimeout(function(){
+      arco.classList.remove('mostrar');
+      celebrando = false;
+    }, 9000);
+  });
+
+  $('#btnSembrar').addEventListener('click', function(){
+    plantarVarias(6);
+    destello(innerWidth/2, innerHeight*.62, 12);
+    mostrarAviso('🌱 ¡Sembraste nuevas flores! Cada una guarda un deseo para ti.');
+  });
+
+  /* ==================== PÉTALOS QUE CAEN (sin saturar) ==================== */
+  var capaPetalos = $('#capaFx');
+  setInterval(function(){
+    var activos = capaPetalos.querySelectorAll('.petalo').length;
+    if (activos > 14) return;            // no acumular demasiados
+    var p = document.createElement('div');
+    p.className = 'petalo';
+    p.style.left = (Math.random()*100) + 'vw';
+    p.style.width  = (10 + Math.random()*12) + 'px';
+    p.style.height = (8  + Math.random()*9)  + 'px';
+    p.style.setProperty('--dx', (Math.random()*160 - 80) + 'px');
+    p.style.animationDuration = (6 + Math.random()*5) + 's';
+    capaPetalos.appendChild(p);
+    p.addEventListener('animationend', function(){ p.remove(); });
+  }, 430);
+
+  /* ==================== BRILLOS QUE SIGUEN AL CURSOR ==================== */
+  var ultimoFx = 0;
+  document.addEventListener('mousemove', function(e){
+    var ahora = Date.now();
+    if (ahora - ultimoFx < 34) return;
+    ultimoFx = ahora;
+    var s = document.createElement('div');
+    s.className = 'estrella';
+    s.style.left = (e.clientX + (Math.random()*22 - 11)) + 'px';
+    s.style.top  = (e.clientY + (Math.random()*22 - 11)) + 'px';
+    var t = 10 + Math.random()*12;
+    s.style.width = t + 'px'; s.style.height = t + 'px';
+    capaPetalos.appendChild(s);
+    retirar(s, 750);
+  });
+
+  function destello(x, y, n){
+    for (var i = 0; i < n; i++){
+      var s = document.createElement('div');
+      s.className = 'estrella';
+      s.style.left = (x + (Math.random()*50 - 25)) + 'px';
+      s.style.top  = (y + (Math.random()*50 - 25)) + 'px';
+      var t = 8 + Math.random()*14;
+      s.style.width = t + 'px'; s.style.height = t + 'px';
+      capaPetalos.appendChild(s);
+      retirar(s, 750);
+    }
+  }
+
+  /* ==================== AVISO POR CORREO (Web3Forms) ====================
+     Con CADA apertura del enlace te llega un correo con la fecha, la hora
+     y el dispositivo desde donde lo abrieron. 1 aviso por sesión.
+     → La clave APERTURA_KEY ya está activa (web3forms.com, plan gratis). */
+  var APERTURA_KEY = 'de72749a-befe-4678-aff1-46b32cdcd34c';
+
+  (function avisoApertura(){
+    var marcador = new RegExp('[?&]p=([^&]+)').exec(location.search);
+    if (!APERTURA_KEY || APERTURA_KEY.indexOf('PEGA_AQUI') === 0) return; // clave vacía
+    if (sessionStorage.getItem('avisoEnviado')) return;  // 1 aviso por sesión (sin spam por recargas)
+    var enviando = false;
+    if (enviando) return;
+    enviando = true;
+    var linkPersonal = marcador ? decodeURIComponent(marcador[1]) : 'enlace normal de GitHub';
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: APERTURA_KEY,
+        subject: '🌻 Alguien abrió tu regalo de flores amarillas',
+        from_name: 'Aviso Flores 21 de Septiembre',
+        'Persona del enlace': linkPersonal,
+        'Fecha y hora': new Date().toLocaleString('es-CO', { dateStyle: 'full', timeStyle: 'medium' }),
+        'Navegador': navigator.userAgent,
+        'Pantalla': (screen.width + 'x' + screen.height)
+      })
+    }).then(function(r){
+      if (r.ok) sessionStorage.setItem('avisoEnviado', '1');
+    }).catch(function(){});
+  })();
+
+  /* ==================== CONTADOR DE VISITAS (oculto para el dueño) ==================== */
+  var visitas = null;
+
+  function contarVisita(){
+    // Intento 1: countapi.xyz  ·  Intento 2: counterapi.dev  ·  Si falla todo, queda oculto
+    fetch('https://api.countapi.xyz/hit/flores-amarillas-21-sep/visitas')
+      .then(function(r){ return r.json(); })
+      .then(function(d){ visitas = (d && d.value) || null; })
+      .catch(function(){
+        fetch('https://counterapi.vercel.app/api/up?name=flores-amarillas-21-sep')
+          .then(function(r){ return r.json(); })
+          .then(function(d){ visitas = (d && (d.total || d.count)) || null; })
+          .catch(function(){ visitas = null; });
+      });
+  }
+  contarVisita();
+
+  /* Revelar contador: tocar la florecita del pie de página 5 veces
+     (solo el propietario lo sabe). Después de revelarla, un toque basta. */
+  var pasos = parseInt(sessionStorage.getItem('plv') || '0', 10);
+  $('#llave').addEventListener('click', function(e){
+    pasos++;
+    sessionStorage.setItem('plv', pasos);
+    var n = 5 - pasos;
+    if (pasos < 5){
+      mostrarAviso('🌻 1 / 5 · sigue tocando la florecita…');
+    } else {
+      sessionStorage.setItem('plv', '99');
+      if (visitas !== null && visitas !== undefined){
+        mostrarAviso('🔒 Esta flor ha sido visitada ' + visitas + ' veces. Solo tú puedes ver este dato 💛');
+      } else {
+        mostrarAviso('🔒 Contador sin conexión… pero tú “sí” pudiste ver esta página 🌻');
+      }
+    }
+  });
+  if (pasos >= 5){
+    if (visitas !== null && visitas !== undefined){
+      setTimeout(function(){ mostrarAviso('🔒 Esta flor ha sido visitada ' + visitas + ' veces. Solo tú puedes ver este dato 💛'); }, 1500);
+    }
+  }
+
+  /* ==================== TOAST ==================== */
+  var toastEl = $('#toast'), toastT = null;
+  function mostrarAviso(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('on');
+    clearTimeout(toastT);
+    toastT = setTimeout(function(){ toastEl.classList.remove('on'); }, 4200);
+  }
+
+})();
+</script>
+</body>
+</html>
